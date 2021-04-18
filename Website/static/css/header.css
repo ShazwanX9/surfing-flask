@@ -1,0 +1,44 @@
+/* .container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px;
+  min-height: 100vh;
+  width: 100%;
+} */
+
+.text-box {
+  display: block;
+  /* text-indent: 100%; */
+  /* white-space: nowrap; */
+  /* white-space: normal; */
+  white-space: pre;
+  overflow: hidden;
+}
+
+/* .wrapper {
+	text-align: center;
+} */
+
+.gradient {
+  color: #fff;
+  /* text-transform: uppercase; */
+  /* font-family: "Josefin Sans", sans-serif; */
+  background: linear-gradient(to right,#095fab 10%, #25abe8 50%, #57d75b 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 1.5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
+}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+
+{% block title %} {{ username }} NOTES {% endblock %}
+{% block head %} <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}"> {% endblock %}
+
+{% block topic %}<font color = darkblue>NoTeS!</font>{% endblock %}
+
+{% block body %}     
+    <ul>
+        {% for note in user.notes %}
+        <div class = "alert" role = "alert" style = "background-color:#32f728">
+            <span class = "closebtn" aria-hidden = "true" onclick="deleteNote( {{ note.id }} )">&times;</span>
+            <li>{{ note.data }}</li>
+        </div>
+        <br>
+        {% endfor %}
+    </ul>
+
+    <form method="POST" style="margin: auto auto auto auto;">
+        <textarea name="note" class="container" style="width: 400px; padding: 50px; resize: vertical;"></textarea>
+        <br>
+        <button type="submit">Jot Down</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function deleteNote(noteId) {
+            fetch("/delete-note", {
+                method: "POST",
+                body: JSON.stringify({ noteId: noteId }),
+            }).then((_res) => {
+                window.location.href = "/notes";
+            });
+        }
+    </script>
+{% endblock %}
+
+{% block footer %} {% endblock %}
